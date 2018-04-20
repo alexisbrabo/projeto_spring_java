@@ -1,4 +1,4 @@
-package com.eventoapp.eventoapp;
+package com.eventoapp.eventoapp.data;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,9 +15,8 @@ public class DataConfiguration {
     @Bean
     public DataSource dataSource() throws ClassNotFoundException {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        Class.forName("com.mysql.jdbc.Driver");
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:4306/eventosapp?useSSL=false");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:4306/eventosapp?useSSL=false&useTimezone=true&serverTimezone=UTC");
         dataSource.setUsername("root");
         dataSource.setPassword("qwe123");
         return dataSource;
