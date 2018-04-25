@@ -19,7 +19,7 @@ public class Evento implements Serializable {
     private String data;
     @NotEmpty
     private String horario;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evento")
     private List<Convidado> convidados;
 
     public String getNome() {
