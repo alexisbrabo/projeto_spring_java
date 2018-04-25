@@ -20,13 +20,17 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" class="brand-logo"> Lista de Eventos</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i
-                        class="material-icons left">add_circle_outline</i>Cadastrar Evento</a></li>
+                <li><a href="/cadastrarEvento">Cadastrar Evento</a></li>
 
             </ul>
         </div>
     </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="/cadastrarEvento">Cadastrar Evento</a></li>
+    </ul>
 </header>
 
 <div class="container">
@@ -55,8 +59,14 @@
     </table>
 
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+    </script>
 </div>
 </body>
 </html>

@@ -9976,7 +9976,7 @@ var $jscomp$this = this;
 
     Datepicker._template = ['<div class= "modal datepicker-modal">', '<div class="modal-content datepicker-container">', '<div class="datepicker-date-display">', '<span class="year-text"></span>', '<span class="date-text"></span>', '</div>', '<div class="datepicker-calendar-container">', '<div class="pika-single"></div>', '<div class="datepicker-footer">', '<button class="btn-flat datepicker-clear waves-effect" style="visibility: hidden;" type="button"></button>', '<div class="confirmation-btns">', '<button class="btn-flat datepicker-cancel waves-effect" type="button"></button>', '<button class="btn-flat datepicker-done waves-effect" type="button"></button>', '</div>', '</div>', '</div>', '</div>', '</div>'].join('');
 
-    M.Datepicker = Datepicker;
+    ,M.Datepicker = Datepicker;
 
     if (M.jQueryLoaded) {
         M.initializeJqueryWrapper(Datepicker, 'datepicker', 'M_Datepicker');
