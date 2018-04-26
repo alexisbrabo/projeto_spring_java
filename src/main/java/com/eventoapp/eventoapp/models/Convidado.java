@@ -1,9 +1,6 @@
 package com.eventoapp.eventoapp.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -11,6 +8,7 @@ public class Convidado {
 
     @Id
     @NotEmpty
+    @Column(length = 7)
     private String rg;
     @NotEmpty
     private String nomeConvidado;

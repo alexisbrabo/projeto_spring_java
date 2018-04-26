@@ -1,9 +1,11 @@
 package com.eventoapp.eventoapp.models;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -53,8 +55,11 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
-        return (Collection<? extends GrantedAuthority>) this.roles;
+        Collection<GrantedAuthority> auths = new ArrayList<>();
+        for (Role role : this.roles) {
+            auths.add(new SimpleGrantedAuthority("ROLE_" + role.getNomeRole()));
+        }
+        return auths;
     }
 
     @Override

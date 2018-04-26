@@ -26,13 +26,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/cadastrarEvento").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().formLogin().permitAll()
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .and().formLogin().loginPage("/login").permitAll();
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
-        .passwordEncoder(new BCryptPasswordEncoder());
+                .passwordEncoder(new BCryptPasswordEncoder());
     }
 
     @Override
