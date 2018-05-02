@@ -2,14 +2,15 @@
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultrafaq.net.nz/thymeleaf/layout">
 <head>
-    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <title>EventoApp</title>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"
-          media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="materialize/css/mods.css"/>
+
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -17,11 +18,15 @@
 <body>
 
 <header>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Evento</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/eventos">Lista de Eventos</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="#" class="navbar-brand"> Evento</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item active"><a class="nav-link" href="/eventos">Lista de Eventos</a></li>
 
             </ul>
         </div>
@@ -32,28 +37,33 @@
 
     <div th:each="evento : ${evento}">
         <h5>Detalhes do Evento</h5>
-        <div class="row">
-            <p>Nome: <span th:text="${evento.nome}"></span></p>
-            <p>Local: <span th:text="${evento.local}"></span></p>
-            <p>Data: <span th:text="${evento.data}"></span></p>
-            <p>Horario: <span th:text="${evento.horario}"></span></p>
-        </div>
+
+        <p class="text-left">Nome: <span th:text="${evento.nome}"></span></p>
+        <p class="text-left">Local: <span th:text="${evento.local}"></span></p>
+        <p class="text-left">Data: <span th:text="${evento.data}"></span></p>
+        <p class="text-left">Horario: <span th:text="${evento.horario}"></span></p>
+
 
         <th:block th:include="mensagemValidacao"></th:block>
         <br/>
 
         <form method="post">
-            Nome: <input type="text" value="" name="nomeConvidado"/>
-            Rg: <input type="number" value="" min="0000000" max="9999999" name="rg"/>
-            <button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+            <div class="form-group">
+                <label for="nmconvidado">Local</label>
+                <input type="text" class="form-control" id="nmconvidado" value="" name="nomeConvidado"/>
+                <label for="rgconvidado">RG</label>
+                <input type="number" id="rgconvidado" class="form-control" value="" min="0000000" max="9999999"
+                       name="rg"/>
+                <button class="btn btn-primary" type="submit">Adicionar</button>
+            </div>
         </form>
     </div>
 
-    <table>
+    <table class="table">
         <thead>
         <tr>
-            <th>Nome Convidado</th>
-            <th>Rg Convidado</th>
+            <th scope="col">Nome Convidado</th>
+            <th scope="col">Rg Convidado</th>
         </tr>
         </thead>
         <tbody>
@@ -65,8 +75,17 @@
 
     </table>
 
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
 </div>
 </body>
 </html>
