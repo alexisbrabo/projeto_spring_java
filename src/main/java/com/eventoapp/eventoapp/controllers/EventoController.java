@@ -7,9 +7,7 @@ import com.eventoapp.eventoapp.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,12 +22,12 @@ public class EventoController {
     @Autowired
     private ConvidadoRepository cr;
 
-    @RequestMapping(value = "/cadastrarEvento", method = RequestMethod.GET)
+    @GetMapping(value = "/cadastrarEvento")
     public String form() {
         return "evento/formEvento";
     }
 
-    @RequestMapping(value = "/cadastrarEvento", method = RequestMethod.POST)
+    @PostMapping(value = "/cadastrarEvento")
     public String form(@Valid Evento evento, BindingResult result, RedirectAttributes attributes) {
         if (result.hasErrors()) {
             attributes.addFlashAttribute("mensagemErro", "Verifique os Campos!");
@@ -50,7 +48,7 @@ public class EventoController {
         return mv;
     }
 
-    @RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
+    @GetMapping(value = "/{codigo}")
     public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo) {
         Evento evento = er.findByCodigo(codigo);
         ModelAndView mv = new ModelAndView("evento/detalhesEvento");
@@ -61,7 +59,7 @@ public class EventoController {
         return mv;
     }
 
-    @RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
+    @PostMapping(value = "/{codigo}")
     public String detalhesEventoPost(@PathVariable("codigo") long codigo, @Valid Convidado convidado
             , BindingResult result, RedirectAttributes attributes) {
         if (result.hasErrors()) {
